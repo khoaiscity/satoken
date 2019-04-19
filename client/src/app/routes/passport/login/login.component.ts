@@ -37,6 +37,7 @@ export class UserLoginComponent implements OnDestroy {
     private startupSrv: StartupService,
     public http: _HttpClient,
     public msg: NzMessageService,
+    private settingService: SettingsService
   ) {
     this.form = fb.group({
       userName: [null, [Validators.required, Validators.minLength(4)]],
@@ -122,6 +123,8 @@ export class UserLoginComponent implements OnDestroy {
         this.reuseTabService.clear();
         // 设置用户Token信息
         this.tokenService.set(res.user);
+        // User information: including name, avatar, email address
+        this.settingService.setUser(res.user);
         // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
         this.startupSrv.load().then(() => {
           let url = this.tokenService.referrer.url || '/';

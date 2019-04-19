@@ -115,6 +115,7 @@ export const USERS = {
         email: `${data.userName}@qq.com`,
         id: 10000,
         time: +new Date(),
+        avatar: "./assets/tmp/img/avatar.jpg"
       },
     };
   },
