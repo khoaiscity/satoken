@@ -1,33 +1,57 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 // delon
-import { AlainThemeModule } from '@delon/theme';
-import { DelonABCModule } from '@delon/abc';
-import { DelonChartModule } from '@delon/chart';
-import { DelonACLModule } from '@delon/acl';
-import { DelonFormModule } from '@delon/form';
+import { AlainThemeModule } from "@delon/theme";
+import { DelonABCModule } from "@delon/abc";
+import { DelonACLModule } from "@delon/acl";
+import { DelonFormModule } from "@delon/form";
+import { DelonChartModule } from "@delon/chart";
 // i18n
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from "@ngx-translate/core";
 
 // #region third libs
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { CountdownModule } from 'ngx-countdown';
-import { UEditorModule } from 'ngx-ueditor';
-import { NgxTinymceModule } from 'ngx-tinymce';
+import { NgZorroAntdModule } from "ng-zorro-antd";
+import { CountdownModule } from "ngx-countdown";
+const THIRDMODULES = [NgZorroAntdModule, CountdownModule];
+// #endregion
 
-const THIRDMODULES = [
-  NgZorroAntdModule,
-  CountdownModule,
-  UEditorModule,
-  NgxTinymceModule,
-];
+// #region components
+import {
+  DepositComponent,
+  WithdrawalComponent,
+  CoinMarketGroupComponent,
+  CoinMarketListComponent,
+  OrderListChartComponent,
+  TradeHistoryComponent,
+  LastOrderComponent,
+  LimitOrderComponent,
+  MarketOrderComponent,
+  TradingViewComponent
+} from './components';
+import { NumberDirective
+} from './directives';
 // #endregion
 
 // #region your componets & directives
-const COMPONENTS = [];
-const DIRECTIVES = [];
+const COMPONENTS = [
+  DepositComponent,
+  WithdrawalComponent,
+  CoinMarketGroupComponent,
+  CoinMarketListComponent,
+  OrderListChartComponent,
+  TradeHistoryComponent,
+  LastOrderComponent,
+  LimitOrderComponent,
+  MarketOrderComponent,
+  TradingViewComponent
+];
+
+const ENTRY_COMPONENTS = [DepositComponent, WithdrawalComponent];
+const DIRECTIVES = [
+  NumberDirective
+];
 // #endregion
 
 @NgModule({
@@ -38,16 +62,16 @@ const DIRECTIVES = [];
     ReactiveFormsModule,
     AlainThemeModule.forChild(),
     DelonABCModule,
-    DelonChartModule,
     DelonACLModule,
     DelonFormModule,
+    DelonChartModule,
     // third libs
-    ...THIRDMODULES,
+    ...THIRDMODULES
   ],
   declarations: [
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES,
+    ...DIRECTIVES
   ],
   exports: [
     CommonModule,
@@ -56,16 +80,17 @@ const DIRECTIVES = [];
     RouterModule,
     AlainThemeModule,
     DelonABCModule,
-    DelonChartModule,
     DelonACLModule,
     DelonFormModule,
+    DelonChartModule,
     // i18n
     TranslateModule,
     // third libs
     ...THIRDMODULES,
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES,
+    ...DIRECTIVES
   ],
+  entryComponents: [ENTRY_COMPONENTS]
 })
 export class SharedModule {}

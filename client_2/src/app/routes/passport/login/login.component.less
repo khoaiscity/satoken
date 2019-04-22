@@ -1,0 +1,43 @@
+@import '../../../../styles/theme';
+
+:host {
+  display: block;
+  width: 368px;
+  margin: 0 auto;
+  ::ng-deep {
+    .anticon-user, .anticon-lock {
+      color: @primary-color !important;
+    }
+    .ant-input {
+      border-radius: 30px;
+    }
+    .ant-input::placeholder {
+      color: @primary-color;
+    }
+    .ant-input-affix-wrapper .ant-input:not(:first-child) {
+      padding-left: 34px;
+    }
+    .icon {
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.2);
+      margin-left: 16px;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: color 0.3s;
+      &:hover {
+        color: @primary-color;
+      }
+    }
+    .other {
+      text-align: center;
+      margin-top: 24px;
+      line-height: 22px;
+      nz-tooltip {
+        vertical-align: middle;
+      }
+    }
+    .has-error .ant-form-explain {
+      color: #E73D4A;
+    }
+  }
+}

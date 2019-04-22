@@ -1,0 +1,37 @@
+<st #st [loading]="true" [page]="page" [scroll]="{y: '240px' }" full-width [data]="coinList" [columns]="columns"
+  (change)="change($event)">
+  <ng-template st-row="name" let-item let-index="index">
+    <img class="coin-logo" [src]="item.crypto_image" /> {{item.label}}
+  </ng-template>
+  <ng-template st-row="changed" let-item let-index="index">
+    <span [ngClass]="item.twenty_four_hours_movement == 'down' ? 'text-error': 'text-green-dark'">{{item.twenty_four_hours_movement_percentage}}%</span>
+  </ng-template>
+</st>
+
+<!-- <nz-table nzVirtualScroll
+      [nzVirtualItemSize]="5"
+      [nzData]="coinList"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
+      [nzScroll]="{y: '240px' }">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Changed 24h</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template nz-virtual-scroll let-data let-index="index">
+          <tr>
+            <td>
+              <img [src]="data.coinLogo" />&nbsp;
+              {{data.name}}</td>
+            <td>{{data.price}}</td>
+            <td>
+                {{data.changed}}
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table> -->

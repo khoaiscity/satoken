@@ -1,0 +1,33 @@
+<div class="alain-default__content-title">
+  <h1>Transacion Page</h1>
+</div>
+
+<div nz-row nzGutter="32" class="mb-lg ml-sm">
+  Filter: <nz-date-picker class="mr-md ml-sm" [(ngModel)]="fromDate"></nz-date-picker>
+  TO <nz-date-picker class="mr-md ml-md" [(ngModel)]="toDate"></nz-date-picker>
+  <nz-select class="mr-md" style="width:200px" nzShowSearch [(ngModel)]="selectedValue">
+    <nz-option *ngFor="let data of marketList" [nzLabel]="data.label" [nzValue]="data.value"></nz-option>
+  </nz-select>
+
+  <button class="border-0" nzSize="default" nz-button nzType="primary" (click)="loadOne();st.load(1, {market: selectedValue, date_from: date_from, date_to: date_to})">Filter</button>
+</div>
+
+<div nzSpan="24">
+  <st #st full-width [data]="url" [columns]="columns" [page]="page" (change)="change($event)" [res]="res" [req]="req">
+    <ng-template st-row="date" let-item>{{item.trans_date*1000|date:"yyyy-MM-dd HH:mm:ss"}}</ng-template>
+    <ng-template st-row="type" let-item>
+      <span *ngIf="item.trans_type == 'buy'" class="text-success">Buy </span>
+      <span *ngIf="item.trans_type == 'sell'" class="text-red">Sell </span>{{market}}
+    </ng-template>
+    <ng-template st-row="quantity" let-item>{{item.percentage_deducted}}% of {{item.qty}}</ng-template>
+    <ng-template st-row="status" let-item>
+      <button *ngIf="item.status == 'fully_filled'" nzShape="round" class="bg-completed-ghost" nz-button disabled>Completed</button>
+      <button *ngIf="item.status == 'partial_filled'" nzShape="round" class="bg-partial-ghost" nz-button disabled>Partial Fill</button>
+      <button *ngIf="item.status == 'opened_order'" nzShape="round" class="bg-open-ghost" nz-button disabled>Open</button>
+    </ng-template>
+
+    <ng-template st-row="action" let-item>
+      <button *ngIf="item.status == 'opened_order' || item.status == 'partial_filled'" nzShape="round" class="bg-cancel" nz-button>Cancel</button>
+    </ng-template>
+  </st>
+</div>

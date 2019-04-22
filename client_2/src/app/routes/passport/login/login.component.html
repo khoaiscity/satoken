@@ -1,0 +1,32 @@
+<form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
+  <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
+        <input nz-input formControlName="userName" placeholder="Username">
+      </nz-input-group>
+      <nz-form-explain *ngIf="userName.dirty && userName.errors">
+        {{ 'Please Enter Your Username' | translate }}
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-lock">
+        <input nz-input type="password" formControlName="password" placeholder="Password">
+      </nz-input-group>
+      <nz-form-explain *ngIf="password.dirty && password.errors">
+        {{ 'Please Enter Your New Password' | translate }}
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="http.loading" nzBlock>
+      {{ 'app.login.login' | translate }}
+    </button>
+  </nz-form-item>
+</form>
+<div class="other">
+  <span style="color:white">{{'app.login.dont-have-account' | translate}}</span>&nbsp;<a class="register" routerLink="/passport/register">{{ 'app.login.signup' | translate }}</a>
+</div>

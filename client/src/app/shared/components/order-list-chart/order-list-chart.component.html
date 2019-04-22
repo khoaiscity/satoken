@@ -1,0 +1,22 @@
+<div class="border">
+    <div nz-row class="header-bg pt-sm pr-sm pb-sm pl-sm">
+        <div class="text-left font-weight-bold" nz-col nzSpan="8">Price</div>
+        <div class="text-right font-weight-bold" nz-col nzSpan="7">Amount</div>
+        <div class="text-right font-weight-bold" nz-col nzSpan="9">Total</div>
+    </div>
+    <div class="chart-container" nz-row *ngFor="let item of buyOrderList">
+        <div class="pl-md" nz-col nzSpan="8">{{item.price|number:'.8'}}</div>
+        <div class="text-right" nz-col nzSpan="7">{{item.amount|number:'.8'}}</div>
+        <div class="text-right pr-md" nz-col nzSpan="9">{{item.total|number:'.8'}}</div>
+        <span [ngStyle]="{'width.%': getWithBuy(item.total)}" class="bg-success row-chart"></span>
+    </div>
+    <nz-empty *ngIf="buyOrderList.length == 0" [nzNotFoundImage]="'assets/tmp/img/empty-list.svg'"></nz-empty>
+    <div class="text-center border-tb pr-md pl-md pt-sm pb-sm">{{price|number:'.8'}}</div><!--$9.32-->
+    <div class="chart-container" nz-row *ngFor="let item of sellOrderList">
+        <div class="pl-md" nz-col nzSpan="8">{{item.price|number:'.8'}}</div>
+        <div class="text-right" nz-col nzSpan="7">{{item.amount|number:'.8'}}</div>
+        <div class="text-right pr-md" nz-col nzSpan="9">{{item.total|number:'.8'}}</div>
+        <span [ngStyle]="{'width.%': getWithSell(item.total)}" class="bg-red row-chart"></span>
+    </div>
+    <nz-empty *ngIf="sellOrderList.length == 0" [nzNotFoundImage]="'assets/tmp/img/empty-list.svg'"></nz-empty>
+</div>

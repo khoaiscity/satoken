@@ -1,0 +1,40 @@
+@import '../../../assets/alain-default.less';
+
+:host {
+  ::ng-deep {
+    .ant-table table {
+      border: 1px solid @border-color;
+    }
+
+    .ant-table td .img {
+      max-width: 120px;
+    }
+
+    .bg-completed-ghost {
+      color: #6CBD46 !important;
+      border-color: #6CBD46 !important;
+      background-color: transparent !important;
+    }
+    .bg-open-ghost {
+      color: #F7931D !important;
+      border-color: #F7931D !important;
+      background-color: transparent !important;
+    }
+    .bg-partial-ghost {
+      color: #F7931D !important;
+      border-color: #F7931D !important;
+      background-color: transparent !important;
+    }
+    .bg-cancel, .bg-cancel:focus {
+      border-color: white;
+      color: white !important;
+      background-color: #EF1C23;
+    }
+    .bg-cancel:hover {
+      border-color: red;
+      color: red !important;
+      background-color: white;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.015);
+    }
+  }
+}

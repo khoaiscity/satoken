@@ -1,0 +1,18 @@
+<div class="border">
+    <div nz-row class="list-view header-bg pt-sm pr-md pb-sm pl-sm font-weight-bold">Last 24h orders / Open orders</div>
+    <div>
+        <div class="list-view pt-sm pb-sm border-t" nz-row *ngFor="let item of lastOrderList">
+            <div class="pl-md" nz-col nzSpan="6"><img class="coin-logo" [src]="item.image" />{{coin}}/{{market}}</div>
+            <div nz-col class="text-center" nzSpan="3">
+                <span *ngIf="item.trans_type == 'buy'" class="text-success">BUY</span>
+                <span *ngIf="item.trans_type == 'sell'" class="text-red">SELL</span>
+            </div>
+            <div class="text-right" nz-col nzSpan="6">{{item.qty}}</div>
+            <div class="text-right" nz-col nzSpan="6">{{item.percentage_deducted}} of 100%</div>
+            <div class="text-right pr-md" nz-col nzSpan="3">
+                <button *ngIf="item.status != 'fully_filled'" nz-button nzShape="circle" [nzSize]="'default'" (click)="cancel()">X</button>
+            </div>
+        </div>
+        <nz-empty *ngIf="lastOrderList.length == 0" [nzNotFoundImage]="'assets/tmp/img/empty-list.svg'"></nz-empty>
+    </div>
+</div>

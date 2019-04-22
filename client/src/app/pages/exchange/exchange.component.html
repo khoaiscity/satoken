@@ -1,0 +1,9 @@
+<div class="alain-default__content-title">
+  <h1>Exchange Page</h1>
+</div>
+<st #st full-width [data]="cryptos" [columns]="columns" (change)="change($event)">
+  <ng-template st-row="customCryptoImage" let-item>
+    <!--<g2-mini-area line color="#cceafe" height="45" [data]="item.chartData" tooltipType="mini"></g2-mini-area>-->
+    <img [_src]="item.crypto_image_sparkline" error="/assets/tmp/img/chart_loading.png">
+  </ng-template>
+</st>

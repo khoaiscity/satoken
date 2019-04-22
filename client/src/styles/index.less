@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@media (min-width: 768px){
+  .search-container {
+    min-width: 400px;
+  }
+}
+
+
+.sidebar-nav__item-icon {
+  font-size: 16px;
+}
+
+.border {
+  border: 1px solid @border-color;
+
+  &-tb {
+    border-top: 1px solid @border-color;
+    border-bottom: 1px solid @border-color;
+  }
+
+  &-t {
+    border-top: 1px solid @border-color;
+  }
+
+  &-l {
+    border-left: 1px solid @border-color;
+  }
+}
+
+.header-bg {
+  background-color: @table-header-bg;
+}
+
+.coin-logo {
+  max-width: 24px;
+  margin-right: 10px;
+}
+
+.list-view {
+  line-height: 24px;
+}
+
+[nzblock] {
+  width: 100% !important;
+}
+
+.rounded-20 {
+  border-radius: 20px !important; 
+}
+
+.width-25 {
+  width: 25% !important;
+}
+
+.btn-icon {
+  border: none;
+  background: transparent;
+  outline: 0;
+  cursor: pointer;
+  
+  &.btn-back
+  {
+    transition: all .3s;
+    &:hover {
+      transform: translateX(-3px)
+    }
+  }
+}
+
+.logo-s-md {
+  max-width: 32px !important;
+}

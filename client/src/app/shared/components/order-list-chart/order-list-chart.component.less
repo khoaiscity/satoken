@@ -1,0 +1,28 @@
+.row-chart {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 1px;
+    width: 0%;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.chart-container {
+    div {
+        z-index: 1;
+    }
+}
+:host {
+    ::ng-deep {
+        .ant-empty {
+            margin: 32px 0;
+        }
+        .ant-empty-image {
+            height: 100%;
+        }
+        .ant-empty-image img {
+            height: 40px !important;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<!--<div class="border">-->
+    <!--<div nz-row class="pr-md pl-md pt-sm pb-sm">Trade History</div>-->
+    <!--<div nz-row class="header-bg border-t pr-md pl-md pt-sm pb-sm">-->
+        <!--<div nz-col nzSpan="8">Date/Time</div>-->
+        <!--<div class="text-right" nz-col nzSpan="7">Price</div>-->
+        <!--<div class="text-right" nz-col nzSpan="9">Quantity</div>-->
+    <!--</div>-->
+    <!--<div *ngIf="isLoaded && tradeHistoryList.length > 0">-->
+        <!--<div class="list-view pt-sm pb-sm border-t" nz-row *ngFor="let item of tradeHistoryList">-->
+            <!--<div class="pl-md" nz-col nzSpan="8">{{item.date*1000|date:"yyyy-MM-dd HH:mm:ss"}}</div>-->
+            <!--<div class="text-right" nz-col nzSpan="7">-->
+                <!--<span *ngIf="item.movement=='up'" class="text-success">{{item.price}}</span>-->
+                <!--<span *ngIf="item.movement=='down'" class="text-red">{{item.price}}</span>-->
+            <!--</div>-->
+            <!--<div class="text-right pr-md" nz-col nzSpan="9">{{item.quantity}}</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div *ngIf="tradeHistoryList.length == 0">-->
+        <!--<nz-empty></nz-empty>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="border">
+    <div nz-row class="pr-md pl-md pt-sm pb-sm">Trade History</div>
+    <st #st [loading]="true" [page]="page" full-width [data]="tradeHistoryList" [columns]="columns"
+        (change)="change($event)">
+        <ng-template st-row="customTitleQuantity" type="title" let-c>
+            <div class="text-right">{{c.title}}</div>
+        </ng-template>
+        <ng-template st-row="customTitlePrice" type="title" let-c>
+            <div class="text-right">{{c.title}}</div>
+        </ng-template>
+
+        <ng-template st-row="datetime" let-item let-index="index">
+            {{item.date*1000|date:"yyyy-MM-dd HH:mm:ss"}}
+        </ng-template>
+        <ng-template st-row="price" let-item let-index="index">
+            <div class="text-right">
+                <span *ngIf="item.movement=='up'" class="text-success">{{item.price|number:'.8'}}</span>
+                <span *ngIf="item.movement=='down'" class="text-red">{{item.price|number:'.8'}}</span>
+            </div>
+        </ng-template>
+        <ng-template st-row="quantity" let-item let-index="index">
+            <div class="text-right">{{item.quantity|number:'.8'}}</div>
+        </ng-template>
+    </st>
+</div>

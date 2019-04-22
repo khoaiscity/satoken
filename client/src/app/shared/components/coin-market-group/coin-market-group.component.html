@@ -1,0 +1,5 @@
+<nz-tabset class="coin-market-group">
+    <nz-tab *ngFor="let tab of marketList" [nzTitle]="tab">
+        <ex-coin-market-list [coinMarket]="tab"></ex-coin-market-list>
+    </nz-tab>
+</nz-tabset>

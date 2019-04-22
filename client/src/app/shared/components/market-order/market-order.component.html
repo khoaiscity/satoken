@@ -1,0 +1,104 @@
+<div nz-col nzSpan="12" class="pr-lg">
+    <h3 class="text-success">BUY {{coinName}}</h3>
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="marketBuy" (ngSubmit)="submitMarketBuy()">
+        <nz-form-item>
+            <nz-form-label>Quantity</nz-form-label>
+            <nz-form-control>
+                <nz-input-group nzBlock nzSize="large" [nzAddOnAfter]="coinName">
+                    <input nz-input number formControlName="mbqty" placeholder="Input quantity" />
+                </nz-input-group>
+                <nz-form-explain *ngIf="marketBuy.get('mbqty')?.dirty && marketBuy.get('mbqty')?.errors">Please input quantity</nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>Price</nz-form-label>
+            <nz-form-control>
+                <nz-input-group nzBlock nzSize="large" [nzAddOnAfter]="marketName">
+                    <input nz-input formControlName="mbprice" placeholder="The best market price" />
+                </nz-input-group>
+                <!--<nz-form-explain *ngIf="withdrawalForm.get('fieldA')?.dirty && withdrawalForm.get('fieldA')?.errors">Please input price</nz-form-explain>-->
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>Available amount: {{amount|number:'.8'}} {{marketName}}</nz-form-label>
+            <div nz-row nzGutter="6">
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applyBuyAmount(25)">25%</button>
+                </div>
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applyBuyAmount(50)">50%</button>
+                </div>
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applyBuyAmount(75)">75%</button>
+                </div>
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applyBuyAmount(100)">100%</button>
+                </div>
+            </div>
+            <!--<div class="border-tb pt-sm mt-md pb-sm" nz-row nzGutter="6">-->
+                <!--<div nz-col nzSpan="8">Total:</div>-->
+                <!--<div class="text-right" nz-col nzSpan="16">{{buyTotal}} {{coinName}}</div>-->
+            <!--</div>-->
+        </nz-form-item>
+        <div>
+            <button type="submit" class="bg-success border-0" nzSize="large" nzType="primary"
+                    nzBlock nz-button>Buy</button>
+        </div>
+    </form>
+</div>
+<div class="border-l pl-lg" nz-col nzSpan="12">
+    <h3 class="text-red">SELL {{coinName}}</h3>
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="marketSell" (ngSubmit)="submitMarketSell()">
+        <nz-form-item>
+            <nz-form-label>Quantity</nz-form-label>
+            <nz-form-control>
+                <nz-input-group nzBlock nzSize="large" [nzAddOnAfter]="coinName">
+                    <input nz-input number formControlName="msqty" placeholder="Input quantity" />
+                </nz-input-group>
+                <nz-form-explain *ngIf="marketSell.get('msqty')?.dirty && marketSell.get('msqty')?.errors">Please input quantity</nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>Price</nz-form-label>
+            <nz-form-control>
+                <nz-input-group nzBlock nzSize="large" [nzAddOnAfter]="marketName">
+                    <input nz-input formControlName="msprice" placeholder="The best market price" />
+                </nz-input-group>
+                <!--<nz-form-explain *ngIf="withdrawalForm.get('fieldA')?.dirty && withdrawalForm.get('fieldA')?.errors">Please input price</nz-form-explain>-->
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>Available amount: {{amount|number:'.8'}} {{coinName}}</nz-form-label>
+            <div nz-row nzGutter="6">
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applySellAmount(25)">25%</button>
+                </div>
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applySellAmount(50)">50%</button>
+                </div>
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applySellAmount(75)">75%</button>
+                </div>
+                <div nz-col nzSpan="6">
+                    <button type="button" class="rounded-20" nzBlock nz-button nzType="default"
+                            [nzSize]="'large'" (click)="applySellAmount(100)">100%</button>
+                </div>
+            </div>
+            <!--<div class="border-tb pt-sm mt-md pb-sm" nz-row nzGutter="6">-->
+                <!--<div nz-col nzSpan="8">Total:</div>-->
+                <!--<div class="text-right" nz-col nzSpan="16">{{sellTotal}} {{coinName}}</div>-->
+            <!--</div>-->
+        </nz-form-item>
+        <div>
+            <button type="submit" class="bg-red border-0" nzBlock nz-button nzType="primary"
+                    nzSize="large">Sell</button>
+        </div>
+    </form>
+</div>

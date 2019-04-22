@@ -3,49 +3,54 @@
     "name": "Alain",
     "description": "Ng-zorro admin panel front-end framework"
   },
+  "user": {
+    "name": "Admin",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "cipchk@qq.com"
+  },
   "menu": [
     {
-      "text": "Primary navigation",
+      "text": "main navigation",
       "i18n": "menu.main",
       "group": true,
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "Dashboard",
+          "text": "dashboard",
           "i18n": "menu.dashboard",
           "icon": "anticon anticon-dashboard",
           "children": [
             {
-              "text": "仪表盘V1",
+              "text": "dashboard V1",
               "link": "/dashboard/v1",
               "i18n": "menu.dashboard.v1"
             },
             {
-              "text": "分析页",
+              "text": "analysis page",
               "link": "/dashboard/analysis",
               "i18n": "menu.dashboard.analysis"
             },
             {
-              "text": "监控页",
+              "text": "Monitor page",
               "link": "/dashboard/monitor",
               "i18n": "menu.dashboard.monitor"
             },
             {
-              "text": "工作台",
+              "text": "workbench",
               "link": "/dashboard/workplace",
               "i18n": "menu.dashboard.workplace"
             }
           ]
         },
         {
-          "text": "快捷菜单",
+          "text": "shortcut menu",
           "i18n": "menu.shortcut",
           "icon": "anticon anticon-rocket",
           "shortcutRoot": true,
           "children": []
         },
         {
-          "text": "小部件",
+          "text": "widget",
           "i18n": "menu.widgets",
           "link": "/widgets",
           "icon": "anticon anticon-appstore",
@@ -60,7 +65,7 @@
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "样式",
+          "text": "style",
           "i18n": "menu.style",
           "icon": "anticon anticon-info",
           "children": [

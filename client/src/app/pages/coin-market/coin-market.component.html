@@ -1,0 +1,40 @@
+<div class="alain-default__content-title">
+  <button (click)="backClicked()" class="btn-icon btn-back"><i nz-icon type="left" theme="outline"></i></button>
+  <h1 [ngStyle]="{'width':'100%'}">
+    <img _ngcontent-c13="" class="coin-logo logo-s-md ng-star-inserted" [src]="cryptoImage" /> {{cryptoName|uppercase}}
+  </h1>
+</div>
+<div nz-row nzGutter="32">
+  <nz-col nzMd="24" nzLg="10">
+    <ex-coin-market-group></ex-coin-market-group>
+    <div class="mt-lg">
+      <ex-order-list-chart *ngIf="market" [coin]="coin" [market]="market" [price]="price"></ex-order-list-chart>
+    </div>
+    <div class="mt-lg">
+      <ex-trade-history *ngIf="market" [coin]="coin" [market]="market"></ex-trade-history>
+    </div>
+  </nz-col>
+  <nz-col nzMd="24" nzLg="14">
+    <div class="border">
+      <ex-trading-view *ngIf="market" [coin]="coin" [market]="market"></ex-trading-view>
+    </div>
+    <div class="mt-lg">
+      <div class="border">
+        <div class="p-md" nz-row>
+          <nz-tabset>
+            <nz-tab nzTitle="Limit">
+              <ex-limit-order *ngIf="market" [coin]="coin" [market]="market" [amount]="amount" [price]="price"></ex-limit-order>
+            </nz-tab>
+            <nz-tab nzTitle="Market">
+              <ex-market-order *ngIf="market" [coin]="coin" [market]="market" [amount]="amount" [price]="price"></ex-market-order>
+            </nz-tab>
+          </nz-tabset>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-lg">
+      <ex-last-order *ngIf="market" [coin]="coin" [market]="market"></ex-last-order>
+    </div>
+  </nz-col>
+</div>

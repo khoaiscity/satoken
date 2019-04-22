@@ -1,11 +1,16 @@
 /**
- * 进一步对基础模块的导入提炼
- * 有关模块注册指导原则请参考：https://github.com/ng-alain/ng-alain/issues/180
+ * Further import and refine the basic module
+ * For module registration guidelines please refer to: https://github.com/ng-alain/ng-alain/issues/180
  */
-import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import {
+  NgModule,
+  Optional,
+  SkipSelf,
+  ModuleWithProviders
+} from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
 
-import { AlainThemeModule } from '@delon/theme';
+import { AlainThemeModule, AlainThemeConfig } from '@delon/theme';
 
 // #region mock
 import { DelonMockModule } from '@delon/mock';
@@ -18,10 +23,10 @@ const MOCK_MODULES = !environment.production
 
 // #region reuse-tab
 /**
- * 若需要[路由复用](https://ng-alain.com/components/reuse-tab)需要：
- * 1、增加 `REUSETAB_PROVIDES`
- * 2、在 `src/app/layout/default/default.component.html` 修改：
- *  ```html
+ * If you need [Route Reuse] (https://ng-alain.com/components/reuse-tab) you need:
+ * 1, increase `REUSETAB_PROVIDES`
+ * 2, in `src/app/layouts/default/default.component.html` Modify:
+ * ```html
  *  <section class="alain-default__content">
  *    <reuse-tab></reuse-tab>
  *    <router-outlet></router-outlet>
@@ -45,7 +50,7 @@ import { PageHeaderConfig } from '@delon/abc';
 export function fnPageHeaderConfig(): PageHeaderConfig {
   return {
     ...new PageHeaderConfig(),
-    ...{ homeI18n: 'home' } as PageHeaderConfig
+    ...({ homeI18n: 'home' } as PageHeaderConfig)
   };
 }
 
@@ -53,7 +58,7 @@ import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
   return {
     ...new DelonAuthConfig(),
-    ...{ login_url: '/passport/login' } as DelonAuthConfig
+    ...({ login_url: '/user/login' } as DelonAuthConfig)
   };
 }
 
@@ -61,26 +66,35 @@ import { STConfig } from '@delon/abc';
 export function fnSTConfig(): STConfig {
   return {
     ...new STConfig(),
-    ...{
+    ...({
       modal: { size: 'lg' }
-    } as STConfig
+    } as STConfig)
+  };
+}
+
+export function fnAlainThemeConfig(): AlainThemeConfig {
+  return {
+    ...new AlainThemeConfig(),
+    ...({
+      http: {
+        nullValueHandling: 'ignore'
+      }
+    } as AlainThemeConfig)
   };
 }
 
 const GLOBAL_CONFIG_PROVIDES = [
-  // TIPS：@delon/abc 有大量的全局配置信息，例如设置所有 `st` 的页码默认为 `20` 行
+  // TIPS: @delon/abc has a lot of global configuration information, such as setting the page number of all `st` to default to `20`
   { provide: STConfig, useFactory: fnSTConfig },
   { provide: PageHeaderConfig, useFactory: fnPageHeaderConfig },
-  { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
+  { provide: AlainThemeConfig, useFactory: fnAlainThemeConfig },
+  { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig }
 ];
 
 // #endregion
 
 @NgModule({
-  imports: [
-    AlainThemeModule.forRoot(),
-    ...MOCK_MODULES,
-  ],
+  imports: [AlainThemeModule.forRoot(), ...MOCK_MODULES]
 })
 export class DelonModule {
   constructor(@Optional() @SkipSelf() parentModule: DelonModule) {
@@ -90,7 +104,7 @@ export class DelonModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: DelonModule,
-      providers: [...REUSETAB_PROVIDES, ...GLOBAL_CONFIG_PROVIDES],
+      providers: [...REUSETAB_PROVIDES, ...GLOBAL_CONFIG_PROVIDES]
     };
   }
 }

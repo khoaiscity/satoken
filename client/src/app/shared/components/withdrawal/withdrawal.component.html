@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <div class="modal-title">Withdrawal {{record.name}}</div>
+</div>
+<form nz-form [nzLayout]="'vertical'" [formGroup]="withdrawalForm" (ngSubmit)="submitForm()">
+  <!-- <nz-form-item>
+    <nz-form-label>Form Layout</nz-form-label>
+  </nz-form-item> -->
+  <nz-form-item>
+    <nz-form-label>Recipient’s wallet address<br />
+      <small>Please verify the wallet address. We cannot refund an incorrect withdrawal.</small>
+    </nz-form-label>
+    <nz-form-control>
+      <input nzSize="large" nz-input formControlName="Recipient’s wallet address" placeholder="Input wallet address">
+      <nz-form-explain *ngIf="withdrawalForm.get('fieldA')?.dirty && withdrawalForm.get('fieldA')?.errors">Please input
+          recipient’s wallet address!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label>Withdrawal amount</nz-form-label>
+    <nz-form-control>
+      <nz-input-group nzSize="large" [nzAddOnAfter]="record.name">
+        <input nz-input formControlName="filedB" placeholder="Input withdrawal amount">
+      </nz-input-group>
+
+      <nz-form-explain *ngIf="withdrawalForm.get('filedB')?.dirty && withdrawalForm.get('filedB')?.errors">Please input
+        withdrawal amount!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row>
+    <div nz-col nzSpan="16" nzOffset="8">
+      <sv-container labelWidth="200">
+        <sv col="1" class="text-right" label="Transaction Fee">5.00000000 USDT</sv>
+        <sv col="1" class="text-right" label="Total Withdrawal">0.00000000 USDT</sv>
+      </sv-container>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="cancel()">
+      Cancel
+    </button>
+    <button nz-button [nzType]="'primary'" [nzSize]="'large'" type="submit">
+      Withdrawal
+    </button>
+  </div>
+</form>
