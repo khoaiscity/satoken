@@ -125,6 +125,7 @@
   "app.login.sign-in-with": "Σύνδεση με",
   "app.login.signup": "Εγγραφή",
   "app.login.login": "Σύνδεση",
+  "app.login.dont-have-account": "Don't Have Account?",
   "app.register.register": "Εγγραφή",
   "app.register.get-verification-code": "Λήψη κωδικού",
   "app.register.sign-in": "Εχετε ήδη λογαριασμό;",

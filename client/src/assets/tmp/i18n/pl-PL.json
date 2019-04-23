@@ -125,6 +125,7 @@
   "app.login.sign-in-with": "Zaloguj się za pomocą",
   "app.login.signup": "Zarejestruj się",
   "app.login.login": "Logowanie",
+  "app.login.dont-have-account": "Don't Have Account?",
   "app.register.register": "Rejestracja",
   "app.register.get-verification-code": "Pobierz kod",
   "app.register.sign-in": "Już masz konto?",

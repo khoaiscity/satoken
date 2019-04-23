@@ -125,6 +125,7 @@
   "app.login.sign-in-with": "Şununla giriş yapın",
   "app.login.signup": "Kaydol",
   "app.login.login": "Giriş",
+  "app.login.dont-have-account": "Don't Have Account?",
   "app.register.register": "Kayıt",
   "app.register.get-verification-code": "Kodu al",
   "app.register.sign-in": "Hesabınız zaten var ı?",

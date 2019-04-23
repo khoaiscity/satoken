@@ -125,6 +125,7 @@
   "app.login.sign-in-with": "其他登錄方式",
   "app.login.signup": "註冊賬戶",
   "app.login.login": "登錄",
+  "app.login.dont-have-account": "Don't Have Account?",
   "app.register.register": "註冊",
   "app.register.get-verification-code": "獲取驗證碼",
   "app.register.sign-in": "使用已有賬戶登錄",
